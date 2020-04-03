@@ -15,7 +15,8 @@ class WordsController < ProtectedController
 
   # POST /words
   def create
-    @word = Word.new(word_params)
+    # @word = Word.new(word_params)
+    @word = current_user.words.build(word_params)
 
     if @word.save
       render json: @word, status: :created, location: @word
@@ -46,6 +47,6 @@ class WordsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def word_params
-      params.require(:word).permit(:name, :definition, :parts_of_speech, :sample_sentence, :user_id)
+      params.require(:word).permit(:name, :definition, :parts_of_speech, :sample_sentence)
     end
 end
