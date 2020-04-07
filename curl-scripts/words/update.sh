@@ -7,7 +7,7 @@ curl "http://localhost:4741/words/${ID}" \
     "word": {
       "name": "'"${NAME}"'",
       "definition": "'"${DEFINITION}"'",
-      "part_of_speech": "'"${POS}"'",
+      "parts_of_speech": "'"${POS}"'",
       "sample_sentence": "'"${SAMPLESENTENCE}"'",
       "user_id": "'"${USERID}"'"
     }

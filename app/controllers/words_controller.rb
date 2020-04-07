@@ -3,14 +3,14 @@ class WordsController < ProtectedController
 
   # GET /words
   def index
-    @words = Word.all
+    @words = current_user.words.all
 
     render json: @words
   end
 
   # GET /words/1
   def show
-    render json: @word
+    render json: Word.find(params[:id])
   end
 
   # POST /words
@@ -42,7 +42,7 @@ class WordsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_word
-      @word = Word.find(params[:id])
+      @word = current_user.words.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
